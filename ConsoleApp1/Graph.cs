@@ -11,19 +11,18 @@ namespace ConsoleApp1
     {
         public Dictionary<string, List<string>> MyGraph;
         
-
         // Конструктор по умолчанию, создающий пустой граф
-
         public Graph()
         {
             MyGraph = new Dictionary<string, List<string>>();
         }
+
         // Конструктор чтения файла
         public Graph(string FileName)
         {
-            FileReading(FileName);
+            DownloadFromFile(FileName);
         }
-
+       
         // Конструктор копирования
         public Graph(Graph other)
         {
@@ -35,40 +34,42 @@ namespace ConsoleApp1
         }
 
         // Методы чтение файла MyGraph
-
-        public void FileReading (string FileName)
+        public (string, string) DownloadFromFile(string FileName)
         {
             MyGraph = new Dictionary<string, List<string>>();
+            string p = string.Empty;
             try
-            { 
-                string[] lines = File.ReadAllLines(FileName);
-                foreach (string line in lines)
-                {
-                   
-                    string[] tokens = line.Split(' ');
-                    string vertex = tokens[0];
-                    List<string> edges = new List<string>();
+            {
 
-                    for (int i = 1; i < tokens.Length; i++)
+                string[] lines2 = File.ReadAllLines(FileName).Take(2).ToArray();
+                string[] lines = File.ReadAllLines(FileName).Skip(2).ToArray();
+                string line1 = lines2[0].Trim();
+                string line2 = lines2[1].Trim();
+                foreach (var i in lines)
+                {
+                    string[] line = i.Split(' ');
+                    string Key = line[0];
+                    List<string> diff = new List<string>();
+
+                    for (var j = 1; j < line.Length; j++)
                     {
-                        edges.Add(tokens[i]);
+                        diff.Add(line[j].Trim());
                     }
 
-                    MyGraph.Add(vertex, edges);
+                    MyGraph.Add(Key, diff);
                 }
+
+                return (line1, line2);
             }
-            catch (FileNotFoundException)
+            catch (Exception e)
             {
-                Console.WriteLine($"Файл с таким именем '{FileName}' не найден");
+                Console.WriteLine(e);
+
             }
-            catch (IOException)
-            {
-                Console.WriteLine("Ошибка ввода-вывода");
-            }
+            return (p, p);
         }
 
-
-       // Добавление вершины
+        // Добавление вершины
         public int AddVertex(string vertex)
         {
             if (!MyGraph.ContainsKey(vertex) && vertex != "" && vertex != " ")
@@ -78,6 +79,7 @@ namespace ConsoleApp1
             }        
             return 0;            
         }
+
         // Удаление вершины
         public int RemoveVertex(string vertex) 
         {
@@ -197,6 +199,7 @@ namespace ConsoleApp1
 
             WriteDictionaryToFile(MyGraph, fileName, focus, weight);
         }
+
         // Доп метод печати
         public static void WriteDictionaryToFile(Dictionary<string, List<string>> dictionary, string fileName, string focus, string weight)
         {
@@ -278,41 +281,6 @@ namespace ConsoleApp1
             }
         }
 
-        public (string,string) DownloadFromFile(string FileName)
-        {
-            MyGraph = new Dictionary<string, List<string>>();
-            string p = string.Empty;
-            try
-            {
-                
-                string[] lines2 = File.ReadAllLines(FileName).Take(2).ToArray();
-                string[] lines = File.ReadAllLines(FileName).Skip(2).ToArray();
-                string line1 = lines2[0].Trim();
-                string line2 = lines2[1].Trim();
-                foreach (var i in lines)
-                {
-                    string[] line = i.Split(' ');
-                    string Key = line[0];
-                    List<string> diff = new List<string>();
-
-                    for (var j = 1; j < line.Length; j++)
-                    {
-                        diff.Add(line[j].Trim());
-                    }
-
-                    MyGraph.Add(Key, diff);
-                }
-
-                return (line1, line2);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-               
-            }
-            return (p, p);
-        }
-
         // Вывод в консоль
         public void PrintG(string focus, string weight)
         {
@@ -384,6 +352,7 @@ namespace ConsoleApp1
             }
 
         }
+
         // Очищение класс
         public void Clear()
         {

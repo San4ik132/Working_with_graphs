@@ -137,10 +137,6 @@ namespace ConsoleApp1
             }
         }
 
-    
-
-
-
         // Добавление вершины
         private void AddVertexMenu()
         {
