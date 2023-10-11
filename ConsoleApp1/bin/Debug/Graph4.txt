@@ -1,0 +1,11 @@
+0
+0
+a g 10 b 15
+b g -3 c 100 o 1
+c c 2 v 5
+o s 3
+d s 4
+s b 77
+v s 1
+g d 3 g 88
+j

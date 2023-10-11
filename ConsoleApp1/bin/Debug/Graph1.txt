@@ -1,0 +1,11 @@
+1
+1
+a b 0 g 0
+b a 0 c 0
+c b 0 d 0 o 0
+o c 0
+d c 0 s 0 v 0
+s d 0
+v d 0 g 0
+g a 0 v 0 g 0
+p
