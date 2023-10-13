@@ -10,7 +10,7 @@ namespace ConsoleApp1
     public class Graph
     {
         public Dictionary<string, List<string>> MyGraph;
-        
+
         // Конструктор по умолчанию, создающий пустой граф
         public Graph()
         {
@@ -22,7 +22,7 @@ namespace ConsoleApp1
         {
             DownloadFromFile(FileName);
         }
-       
+
         // Конструктор копирования
         public Graph(Graph other)
         {
@@ -76,12 +76,12 @@ namespace ConsoleApp1
             {
                 MyGraph.Add(vertex, new List<string>());
                 return 1;
-            }        
-            return 0;            
+            }
+            return 0;
         }
 
         // Удаление вершины
-        public int RemoveVertex(string vertex) 
+        public int RemoveVertex(string vertex)
         {
             if (MyGraph.ContainsKey(vertex))
             {
@@ -184,7 +184,7 @@ namespace ConsoleApp1
                     sourceEdges.RemoveAt(sourceEdges.IndexOf(target) + 1);
                     sourceEdges.Remove(target);
                     targetEdges.RemoveAt(targetEdges.IndexOf(source) + 1);
-                    targetEdges.Remove(source);                  
+                    targetEdges.Remove(source);
                     return 1;
                 }
             }
@@ -194,7 +194,7 @@ namespace ConsoleApp1
         // Печать в файл
         public void PrintToFILE(string focus, string weight)
         {
-         
+
             string fileName = "SaveMyGraph.txt";
 
             WriteDictionaryToFile(MyGraph, fileName, focus, weight);
@@ -297,10 +297,10 @@ namespace ConsoleApp1
             Console.WriteLine();
             Console.WriteLine("Список смежности");
             foreach (var K in MyGraph)
-            {             
+            {
                 foreach (var V in K.Value)
                 {
-                    if(int.TryParse(V, out int result) == true)
+                    if (int.TryParse(V, out int result) == true)
                     {
                         Console.Write($"вес({result}) ");
                     }
@@ -309,9 +309,9 @@ namespace ConsoleApp1
                         Thread.Sleep(60);
                         Console.Write($"{K.Key} -> {V} ");
                     }
-                    
+
                 }
-                Console.WriteLine();   
+                Console.WriteLine();
             }
 
             int size = MyGraph.Count;
@@ -358,6 +358,35 @@ namespace ConsoleApp1
         {
             MyGraph = new Dictionary<string, List<string>>();
         }
-    }
 
+
+        public static Dictionary<string, List<string>> BuildCompleteGraph(Dictionary<string, List<string>> inputGraph)
+        {
+            Dictionary<string, List<string>> completeGraph = new Dictionary<string, List<string>>();
+
+            // Копируем вершины из исходного графа в полный граф
+            foreach (var vertex in inputGraph.Keys)
+            {
+                completeGraph[vertex] = new List<string>(inputGraph[vertex]);
+            }
+
+            // Добавляем отсутствующие ребра в полный граф
+            foreach (var vertex1 in inputGraph.Keys)
+            {
+                foreach (var vertex2 in inputGraph.Keys)
+                {
+                    if (vertex1 != vertex2 && !completeGraph[vertex1].Contains(vertex2))
+                    {
+                        completeGraph[vertex1].Add(vertex2);
+                        completeGraph[vertex1].Add("0");
+                    }
+                }
+            }
+            return completeGraph;
+        }
+
+
+       
+    }
+    
 }

@@ -8,6 +8,7 @@ namespace ConsoleApp1
         public string choice3 = string.Empty;
         public string choice4 = string.Empty;
         Graph graph1 = new Graph();
+        
         public void RUN()
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -86,6 +87,10 @@ namespace ConsoleApp1
                     Thread.Sleep(60);
                     Console.WriteLine("9. Выход");
                     Thread.Sleep(60);
+                    Console.WriteLine("10 Задание 2 часть 1");
+                    Thread.Sleep(60);
+                    Console.WriteLine("11 Задание 2 часть 2");
+                    Thread.Sleep(60);
                     Console.Write("Введите свой выбор: ");
                     string choice = Console.ReadLine();
 
@@ -126,6 +131,12 @@ namespace ConsoleApp1
                             isRunning3 = false;
                             isRunning2 = false;
                             isRunning1 = false;
+                            break;
+                        case "10":
+                            graph1.MyGraph = Graph.BuildCompleteGraph(graph1.MyGraph);
+                            break;
+                        case "11":
+                          
                             break;
                         default:
                             Console.WriteLine("Неверный выбор! Пробовать снова.");
@@ -196,8 +207,7 @@ namespace ConsoleApp1
             }
             
         }
-
-       
+      
         // Добавления ребра для неправленного графа
         private void AddEdgeUndirectedMenu()
         {
@@ -245,6 +255,7 @@ namespace ConsoleApp1
             }
 
         }
+
         // Удаление ребра для ненаправленного
         private void RemoveEdgeUndirectedMenu()
         {
