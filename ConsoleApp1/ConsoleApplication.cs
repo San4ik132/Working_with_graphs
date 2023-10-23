@@ -175,24 +175,12 @@ namespace ConsoleApp1
                             Console.WriteLine($"Дерево, Лес или ни то и не другое - {graph1.DetermineGraphType(graph1.MyGraph)}");
                             break;
                         case "16":
-                            var myGraph = new Dictionary<string, List<string>>()
-                            {
-                            { "a", new List<string>() { "g","10", "b", "15" } },
-                            { "b", new List<string>() { "g","-3", "c","100", "o","1" } },
-                            { "c", new List<string>() { "c 2", "v 5" } },
-                            { "o", new List<string>() { "s","3" } },
-                            { "d", new List<string>() { "s","4" } },
-                            { "s", new List<string>() { "b", "77" } },
-                            { "v", new List<string>() { "s", "1" } },
-                            { "g", new List<string>() { "d", "3", "g", "88" } },
-                            { "j", new List<string>() }
-                            };
-
-                            var spanningTree = Graph.KruskalAlgorithm.Kruskal(myGraph);
+                           
+                            var spanningTree = Graph.KruskalAlgorithm.Kruskal(graph1.MyGraph, graph1.focusBool, graph1.weightBool);
 
                             foreach (var edge in spanningTree)
                             {
-                                Console.WriteLine($"{edge.Source} - {edge.Destination}: {edge.Weight}");
+                                Console.WriteLine($"{edge.Source} -> {edge.Destination} вес({edge.Weight})");
                             }
                             break;
                         default:

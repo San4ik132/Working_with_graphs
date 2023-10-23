@@ -764,7 +764,7 @@ namespace ConsoleApp1
             }
         }
 
-
+        // Алгоритм Крускал
         public class KruskalAlgorithm
         {
             public class Edge : IComparable<Edge>
@@ -779,7 +779,7 @@ namespace ConsoleApp1
                 }
             }
 
-            public class DisjointSet
+            public class DisjointSet : Graph
             {
                 private Dictionary<string, string> parent;
                 private Dictionary<string, int> rank;
@@ -827,44 +827,58 @@ namespace ConsoleApp1
                 }
             }
 
-            public static List<Edge> Kruskal(Dictionary<string, List<string>> graph)
+            public static List<Edge> Kruskal(Dictionary<string, List<string>> graph, bool focusBool, bool weightBool)
             {
-                var vertices = new List<string>();
-                foreach (var kvp in graph)
+                if (focusBool == true && weightBool == true)
                 {
-                    vertices.Add(kvp.Key);
-                }
-
-                var edges = new List<Edge>();
-                foreach (var kvp in graph)
-                {
-                    var source = kvp.Key;
-                    foreach (var neighbor in kvp.Value)
+                    var vertices = new List<string>();
+                    foreach (var kvp in graph)
                     {
-                        var destination = neighbor.Split(' ')[0];
-                        var weight = int.Parse(neighbor.Split(' ')[1]);
-                        edges.Add(new Edge { Source = source, Destination = destination, Weight = weight });
+                        vertices.Add(kvp.Key);
                     }
-                }
-
-                edges.Sort();
-
-                var minimalSpanningTree = new List<Edge>();
-                var disjointSet = new DisjointSet(vertices);
-
-                foreach (var edge in edges)
-                {
-                    var sourceRoot = disjointSet.Find(edge.Source);
-                    var destinationRoot = disjointSet.Find(edge.Destination);
-
-                    if (sourceRoot != destinationRoot)
+                    var weight = 0;
+                    var destination = string.Empty;
+                    var edges = new List<Edge>();
+                    foreach (var kvp in graph)
                     {
-                        disjointSet.Union(edge.Source, edge.Destination);
-                        minimalSpanningTree.Add(edge);
-                    }
-                }
+                        var source = kvp.Key;
+                        foreach (var neighbor in kvp.Value)
+                        {
 
-                return minimalSpanningTree;
+                            if (int.TryParse(neighbor, out int result) == true)
+                            {
+                                weight = result;
+                                edges.Add(new Edge { Source = source, Destination = destination, Weight = weight });
+                            }
+                            else
+                            {
+                                destination = neighbor;
+                            }
+
+                        }
+                    }
+                    edges.Sort();
+
+                    var minimalSpanningTree = new List<Edge>();
+                    var disjointSet = new DisjointSet(vertices);
+
+                    foreach (var edge in edges)
+                    {
+                        var sourceRoot = disjointSet.Find(edge.Source);
+                        var destinationRoot = disjointSet.Find(edge.Destination);
+
+                        if (sourceRoot != destinationRoot)
+                        {
+                            disjointSet.Union(edge.Source, edge.Destination);
+                            minimalSpanningTree.Add(edge);
+                        }
+                    }
+
+                    return minimalSpanningTree;
+                }
+                else return new List<Edge>();
+
+
             }
 
            
