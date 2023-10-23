@@ -1,6 +1,6 @@
-False
 True
-a b c o d s v g p j
+False
+a b c o d s v g p j 
 a b 13 g 33 p 0
 b a 13 c 10
 c b 10 d 33 o 40

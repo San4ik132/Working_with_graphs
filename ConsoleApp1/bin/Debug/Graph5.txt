@@ -1,0 +1,6 @@
+True
+False
+a b j
+a b 0
+b j 0
+j a 0

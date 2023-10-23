@@ -1,5 +1,6 @@
-0
-0
+True
+True
+a b c o d s v g j
 a g 10 b 15
 b g -3 c 100 o 1
 c c 2 v 5
