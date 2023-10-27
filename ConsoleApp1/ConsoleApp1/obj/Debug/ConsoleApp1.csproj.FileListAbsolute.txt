@@ -1,0 +1,16 @@
+D:\4 - kurs\Есин\Лабы\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+D:\4 - kurs\Есин\Лабы\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+D:\4 - kurs\Есин\Лабы\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+D:\4 - kurs\Есин\Лабы\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.AssemblyReference.cache
+D:\4 - kurs\Есин\Лабы\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.SuggestedBindingRedirects.cache
+D:\4 - kurs\Есин\Лабы\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+D:\4 - kurs\Есин\Лабы\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+D:\4 - kurs\Есин\Лабы\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+E:\4 kyrs\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+E:\4 kyrs\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+E:\4 kyrs\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+E:\4 kyrs\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.AssemblyReference.cache
+E:\4 kyrs\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.SuggestedBindingRedirects.cache
+E:\4 kyrs\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+E:\4 kyrs\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+E:\4 kyrs\ConsoleApp1\obj\Debug\ConsoleApp1.pdb

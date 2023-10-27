@@ -1,0 +1,7 @@
+True
+True
+a b c d o
+a b 17
+c a 20
+d a 4 b 5 c 2 o 8
+o b 1

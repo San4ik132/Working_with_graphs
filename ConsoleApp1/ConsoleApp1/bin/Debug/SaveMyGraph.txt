@@ -1,0 +1,6 @@
+True
+False
+g s x
+g s 0
+s x 0
+x g 0

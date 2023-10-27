@@ -1,0 +1,12 @@
+True
+False
+a b j c d k h p l
+a b 0
+b j 0
+j a 0
+c d 0
+d k 0 b 0
+k c 0
+h p 0
+p l 0
+l h 0 j 0
